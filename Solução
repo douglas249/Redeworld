@@ -1,0 +1,56 @@
+from time import sleep
+from tabulate import tabulate
+print ('[ 1 ] Cisco System\n'  '[ 2 ] Huawei\n' '[ 3 ] TP-Link\n' '[ 4 ] Intelbras\n')
+opção1 = int(input('Escolha uma marca: '))
+if opção1 == 1:
+         equipamento = str(input('Ver roteadores, switchs ou access Point?'))
+         sleep(1)
+         if equipamento == 'roteadores':
+            CiscoISR1100 = 2.500
+            CiscoISR4321 = 5.600
+            CiscoISR4331 = 7.000
+            CiscoISR4431 = 15.000
+            roteadorestotais = CiscoISR1100 + CiscoISR4321 + CiscoISR4331 + CiscoISR4431
+            lista = [
+               ["Cisco ISR 1100 Series", "Pequenas empresas", "1.300 – 2.500"],
+               ["Cisco ISR 4321", "Filiais e escritórios", "2.700 – 5.600"],
+               ["Cisco ISR 4331", "Médio porte", "1.700 – 7.000"],
+               ["Cisco ISR 4431", "Grande porte", "7.900 – 15.000"],
+            ]
+
+            print(tabulate(
+               lista,
+               headers=["Modelo Cisco", "Descrição", "Preço médio (R$)"],
+               tablefmt="grid"
+            ))
+            print('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'switchs':
+            print ('SWITCHS CISCO')
+            CiscoSG220_26 = 2800
+            CiscoCatalystC9300_24P = 30000
+            CiscoCatalystC9300L_24P = 38000
+            CiscoCatalystC1300_24XT = 24000
+            totaisswitchs = CiscoSG220_26 + CiscoCatalystC9300_24P + CiscoCatalystC9300L_24P + CiscoCatalystC1300_24XT
+            print ('| Modelo Cisco'                '| Descrição'                 '|Preço médio (R$) |'
+              '--------------------------- | ----------------------- | ----------------------------------------: |'
+               'Cisco Catalyst 2960X-24TS-L|	   24 portas Gigabit L4 |                              1.800 – 2.000'
+	            'Cisco SG220-26 	          |       24 portas + 2 SFP	|                              2.000 – 2.800'
+	            'Cisco Catalyst C9300-24P|       	24 portas PoE+    |                              37.900 – 38.000'
+	            'Cisco Catalyst C1300-24XT	 |      Switch 10 Gigabit	|                              23.800 – 24.000')
+            print ('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'acess Point':
+            print ('ACESS POINT CISCO')
+            CiscoMerakiMR33 =	 1.000
+            AccessPointCiscoMeraki =	 3.700
+            AccessPointCiscoMeraki =	 4.500
+            AccessPointCiscoMeraki =	 12.000
+            AccessPointCiscoMeraki =	 17.000
+            totaisacesspoint = CiscoMerakiMR33 + AccessPointCiscoMeraki + AccessPointCiscoMeraki + AccessPointCiscoMeraki + AccessPointCiscoMeraki
+            print ('| Modelo Cisco'     '| Descrição         |'       'Preço médio (R$)              |'
+           '|Cisco Meraki MR33            | Wi-Fi 5                 |                              870 – 1.000 |'
+          '| Cisco Meraki MR36            | Wi-Fi 6                 |                            2.300 – 3.700 |'
+          '| Cisco Meraki MR46            | Wi-Fi 6 Enterprise      |                            3.000 – 4.500 |'
+          '| Cisco Meraki CW9164          | Wi-Fi 6E                |                          11.000 – 12.000 |'
+          '| Cisco Meraki CW9166          | Wi-Fi 6E Alta Densidade |                          15.800 – 17.000 |')
+         equipamentos1 = str(input('Deseja ver mais calcular valor total?'))
+            
