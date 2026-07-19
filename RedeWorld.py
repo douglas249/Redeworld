@@ -2,6 +2,129 @@
 import math
 from time import sleep
 from tabulate import tabulate
+#COLOCANDO VARIAVEIS GLOBAIS PARA O CALCULO DE VALORES ENTRE EQUIPAMENTOS NA OPÇÃO 2#
+equipamentos = {
+   "Catalyst_C1200_24T_4G": 2790,
+   "Catalyst_C1200_24P_4G": 4000,
+   "Catalyst_C1200_48P_4G": 59309,
+   "ISR_1100": 2500,
+   "ISR_4321": 5600,
+   "ISR_4331": 7000,
+   "ISR_4431": 15000,
+   "Meraki_MR33": 1.0,
+   "Meraki_MR36": 3.7,
+   "Meraki_MR46": 3.0,
+   "Meraki_CW9164": 11.0,
+   "Meraki_CW9166": 15.8,
+   "TLWR840N": 114,
+   "Archer_C50": 210,
+   "Archer_AX53": 260,
+   "Archer_BE550": 1.3,
+   "TLSG105": 110,
+   "TLSG108": 150,
+   "TLSG1016D": 553,
+   "TLSG1024D": 900,
+   "TLSG1008MP": 770,
+   "T2600G28TS": 1.359,
+   "EAP115": 220,
+   "EAP225": 505,
+   "EAP610": 720,
+   "EAP613": 369,
+   "EAP650": 998,
+   "W4_300S": 160,
+   "W5_1200G": 220,
+   "W5_1200GS": 250,
+   "W6_1500": 328,
+   "R_3000": 473,
+   "SF800Q": 80,
+   "S1116G": 660,
+   "S1124G": 830,
+   "S1110G_PA": 875,
+   "S1120G_PA": 1.903,
+   "S1128G_PA": 2.633,
+   "AP_3_10": 320,
+   "AP_3_60": 702,
+   "AP_12_10_AC": 529,
+   "AP1250ACMax": 1.006,
+   "AP1250ACOutdoor": 1.120,
+   "AP_13_50_AC_S": 890,
+}
+
+
+
+
+
+
+
+}
+
+quantidade = int(input("Quantos equipamentos você deseja calcular? "))
+
+total = 0
+
+for i in range(quantidade):
+    nome = input(f"Digite o nome do {i+1}º equipamento: ")
+
+    if nome in equipamentos:
+        preco = equipamentos[nome]
+        print(f"{nome} custa R$ {preco:,.2f}")
+        total += preco
+    else:
+        print("Equipamento não encontrado!")
+
+print(f"\nValor total: R$ {total:,.2f}")
+
+
+ISR_1100 = 2.500
+ISR_4321 = 5.600
+ISR_4331 = 7.000
+ISR_4431 = 15.000
+Catalyst_C1200_24T_4G =2.790
+Catalyst_C1200_24T_4G =2.790
+Catalyst_C1200_24P_4G =4.000
+Catalyst_C1200_48P_4G =9.309
+Catalyst_2960_X_2 =42.000
+Catalyst_9200L_48T_4G_E =21.241
+Catalyst_9200_48P_E =9.949
+Meraki_MR33 = 1.000
+Meraki_MR36  =3.700
+Meraki_MR46 = 3.000  
+Meraki_CW9164 = 11.000  
+Meraki_CW9166 = 15.800  
+TLWR840N = 114
+Archer_C50 = 210
+Archer_AX53 = 260
+Archer_BE550 = 1.300
+TLSG105	=	110
+TLSG108	=	150
+TLSG1016D	=	553
+TLSG1024D	=	900
+TLSG1008MP	=	770
+T2600G28TS	=	1.359
+EAP115 =220
+EAP225 =505
+EAP610 =720
+EAP613 =369
+EAP650 =998
+W4_300S= 160
+W5_1200G= 220 
+W5_1200GS= 250
+W6_1500 =328
+R_3000 = 473
+SF800Q = 80
+S1116G = 660
+S1124G = 830
+S1110G_PA = 875
+S1120G_PA = 1.903
+S1128G_PA = 2.633
+AP_3_10 = 320
+AP_3_60 = 702
+AP_12_10_AC = 529
+AP1250ACMax = 1.006
+AP1250ACOutdoor = 1.120
+AP_13_50_AC_S = 890
+#TODOS EQUIPAMENTOS E PREÇOS#
+
 #PROGRAMA#
 print ('Bem vindo ao RedeaWorld, aqui voce poderá calcular a quantidade de conectores RJ45 e caixas de cabo de rede para o seu prjeto!')
 sleep(1)
@@ -9,7 +132,7 @@ opção = 0
 #ADICIONEI UMA ESTRUTURA PARA QUE O PROGRAMA NÃO SEJA ENCERRADO DE FORMA INDESEJADA#
 while opção != 5:
 #DENTRO DO WHILE ADICIONEI ALGUMAS OPÇÕES PARA QUE O USUARIO ESCOLHA OQUE FAZER E DE COMO USAR O PROGRAMA#
-   print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Fazer calculo total de equipamento\n' '[ 4 ] Salvar e encerrar')
+   print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Calcular os preços entre os equipamentos\n'     '[ 4 ] Salvar e encerrar')
    opção = int(input('Qual opção deseja?'))
 #NA OPÇÃO 1 ADICIONEI O CALCULO DE CAIXAS DE REDE E CONECTORES#
 #NA OPÇÃO 2 ADICIONEI UMA LISTAGEM DE EQUIPAMENTOS COM SEUS RESPECTIVOS PREÇOS#
@@ -374,8 +497,42 @@ while opção != 5:
                               headers=["Modelo intelbras", "Descrição", "Preço médio (R$)"],
                               tablefmt="grid"
                            ))       
-         
-      
+   if opção == 3:
+         equp = int(input('Quantos equipamentos voce deseja calcular?'))
+         if equp == 5:
+             equip = str(input('Digite o nome do equpamento:')) 
+             equip2 = str(input('Digite o nome do equpamento:')) 
+             equip3 = str(input('Digite o nome do equpamento:')) 
+             equip4 = str(input('Digite o nome do equpamento:')) 
+             equip5 = str(input('Digite o nome do equpamento:')) 
+             valortotal = equip + equip2 + equip3 + equip4 + equip5
+             print ('Os equipamentos são {}, {}, {}, {} e {} o valor total dos equipamentos é {}'.format(equip,equip2,equip3,equip4,equip5,valortotal))
+
+         if equp == 4:
+             equip6 = str(input('Digite o nome do equpamento:')) 
+             equip7 = str(input('Digite o nome do equpamento:')) 
+             equip8 = str(input('Digite o nome do equpamento:')) 
+             equip9 = str(input('Digite o nome do equpamento:')) 
+             valortotal1 = equip6 + equip7 + equip8 + equip9 
+             print ('Os equipamentos são {}, {}, {}, {},  o valor total dos equipamentos é {}'.format(equip6,equip7,equip8,equip9,valortotal1))
+         if equp == 3:
+             equip10 = str(input('Digite o nome do equpamento:')) 
+             equip11 = str(input('Digite o nome do equpamento:')) 
+             equip12 = str(input('Digite o nome do equpamento:')) 
+             valortotal2 = equip10 + equip11 + equip12
+             print ('Os equipamentos são {}, {}, {},  o valor total dos equipamentos é {}'.format(equip10,equip11,equip12,valortotal2))
+                  
+
+
+         if equp == 2:
+             equip13 = str(input('Digite o nome do equpamento:')) 
+             equip14 = str(input('Digite o nome do equpamento:')) 
+             valortotal3 = equip10 + equip11 + equip12
+             print ('Os equipamentos são {}, {},  o valor total dos equipamentos é {}'.format(equip13,equip14,valortotal3))
+         if equp == 1:
+             equip15 = str(input('Digite o nome do equpamento:')) 
+             print ('O equipamento é {},o valor total do equipamento é {}'.format(equip15, valortotal3))             
+               
 
 
 
