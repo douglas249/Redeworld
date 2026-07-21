@@ -1,5 +1,5 @@
 # ADICIONEI ALGUMAS BIBLIOTECAS PARA MELHORAR O PROGRAMA#
-from openpyxl import workbook
+from openpyxl import Workbook
 import math
 from time import sleep
 from tabulate import tabulate
@@ -58,7 +58,7 @@ print ('Bem vindo ao RedeaWorld, aqui voce poderá calcular a quantidade de cone
 sleep(1)
 opção = 0
 #ADICIONEI UMA ESTRUTURA PARA QUE O PROGRAMA NÃO SEJA ENCERRADO DE FORMA INDESEJADA#
-while opção != 4:
+while opção != 5:
 #DENTRO DO WHILE ADICIONEI ALGUMAS OPÇÕES PARA QUE O USUARIO ESCOLHA OQUE FAZER E DE COMO USAR O PROGRAMA#
    print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Calcular os preços entre os equipamentos\n'     '[ 4 ] Salvar e encerrar')
    opção = int(input('Qual opção deseja?'))
@@ -441,19 +441,19 @@ while opção != 4:
                  else:
                      print("Equipamento não encontrado!")
         
-                 print(f"\nValor total: R$ {total:,.2f}")
+         print(f"\nValor total: R$ {total:,.2f}")
    if opção == 4:
-      wb = workbook()
+      wb = Workbook()
       planilha = wb.worksheets.index(0)
 
-      planilha['A1'] = 'Conectores'
-      planilha['A2'] = 'conectores1'
-      planilha['A3'] = 'conecores2'
-      planilha['A4'] = 'conectores3'
-      planilha['A5'] = 'conecores4'
-      planilha['A6'] = 'conectores5'
-      planilha['A7'] = 'conectores6'
-      planilha['A8'] = 'conectores7'
+      planilha['A1'] =  'QUANTIDADE DE CONECTORES:'
+      planilha['A2'] = conectores1
+      planilha['A3'] = conectores2
+      planilha['A4'] = conectores3
+      planilha['A5'] = conectores4
+      planilha['A6'] = conectores5
+      planilha['A7'] = conectores6
+      planilha['A8'] = conectores7'
       planilha['B1'] =
       planilha['C1'] =
       planilha['D1'] =
