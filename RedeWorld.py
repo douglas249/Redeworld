@@ -1,4 +1,5 @@
 # ADICIONEI ALGUMAS BIBLIOTECAS PARA MELHORAR O PROGRAMA#
+from openpyxl import workbook
 import math
 from time import sleep
 from tabulate import tabulate
@@ -50,23 +51,6 @@ equipamentos = {
    "AP_13_50_AC_S": 890,
 }
 
-quantidade = int(input("Quantos equipamentos você deseja calcular? "))
-
-total = 0
-
-for i in range(quantidade):
-    nome = input(f"Digite o nome do {i+1}º equipamento: ")
-
-    if nome in equipamentos:
-        preco = equipamentos[nome]
-        print(f"{nome} custa R$ {preco:,.2f}")
-        total += preco
-    else:
-        print("Equipamento não encontrado!")
-
-print(f"\nValor total: R$ {total:,.2f}")
-
-
 #TODOS EQUIPAMENTOS E PREÇOS#
 
 #PROGRAMA#
@@ -74,7 +58,7 @@ print ('Bem vindo ao RedeaWorld, aqui voce poderá calcular a quantidade de cone
 sleep(1)
 opção = 0
 #ADICIONEI UMA ESTRUTURA PARA QUE O PROGRAMA NÃO SEJA ENCERRADO DE FORMA INDESEJADA#
-while opção != 5:
+while opção != 4:
 #DENTRO DO WHILE ADICIONEI ALGUMAS OPÇÕES PARA QUE O USUARIO ESCOLHA OQUE FAZER E DE COMO USAR O PROGRAMA#
    print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Calcular os preços entre os equipamentos\n'     '[ 4 ] Salvar e encerrar')
    opção = int(input('Qual opção deseja?'))
@@ -445,21 +429,35 @@ while opção != 5:
 #RESPOTA DA LISTA DE EQUIPAMENTOS:
          quantidade = int(input("Quantos equipamentos você deseja calcular? "))
         
-total = 0
+         total = 0
         
-for i in range(quantidade):
-            nome = input(f"Digite o nome do {i+1}º equipamento: ")
+         for i in range(quantidade):
+                 nome = input(f"Digite o nome do {i+1}º equipamento: ")
         
-            if nome in equipamentos:
-                preco = equipamentos[nome]
-                print(f"{nome} custa R$ {preco:,.2f}")
-                total += preco
-            else:
-                print("Equipamento não encontrado!")
+                 if nome in equipamentos:
+                     preco = equipamentos[nome]
+                     print(f"{nome} custa R$ {preco:,.2f}")
+                     total += preco
+                 else:
+                     print("Equipamento não encontrado!")
         
-print(f"\nValor total: R$ {total:,.2f}")
+                 print(f"\nValor total: R$ {total:,.2f}")
+   if opção == 4:
+      wb = workbook()
+      planilha = wb.worksheets.index(0)
 
-
+      planilha['A1'] = 'Conectores'
+      planilha['A2'] = 'conectores1'
+      planilha['A3'] = 'conecores2'
+      planilha['A4'] = 'conectores3'
+      planilha['A5'] = 'conecores4'
+      planilha['A6'] = 'conectores5'
+      planilha['A7'] = 'conectores6'
+      planilha['A8'] = 'conectores7'
+      planilha['B1'] =
+      planilha['C1'] =
+      planilha['D1'] =
+      planilha['E1'] =
                   
                
 
