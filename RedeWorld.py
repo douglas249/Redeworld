@@ -444,21 +444,37 @@ while opção != 5:
          print(f"\nValor total: R$ {total:,.2f}")
    if opção == 4:
       wb = Workbook()
-      planilha = wb.worksheets.index(0)
+      planilha = wb.worksheets[0]
 
-      planilha['A1'] =  'QUANTIDADE DE CONECTORES:'
+      planilha['A1'] = 'QUANTIDADE DE CONECTORES:'
       planilha['A2'] = conectores1
       planilha['A3'] = conectores2
       planilha['A4'] = conectores3
       planilha['A5'] = conectores4
       planilha['A6'] = conectores5
       planilha['A7'] = conectores6
-      planilha['A8'] = conectores7'
-      planilha['B1'] =
-      planilha['C1'] =
-      planilha['D1'] =
-      planilha['E1'] =
-                  
+      planilha['A8'] = conectores7
+      planilha['A9'] = 'QUANTIDADE TOTAL DE CONECTORES:'
+      planilha['A10'] = totalconec
+      planilha['A11'] = 'RESERVA DE CONECTORES:'
+      planilha['A12'] = reservaconec
+      planilha['B1'] = 'EQUIPAMENTOS:'
+      planilha['B2'] = 'computadores'
+      planilha['B3'] = 'switchs'
+      planilha['B4'] = 'switchsgre'
+      planilha['B5'] = 'dvrs'
+      planilha['B6'] = 'impressoras'
+      planilha['B7'] = 'servidorarq'
+      planilha['B8'] = 'roteadores'
+      planilha['C1'] = 'QUANTIDADE:'
+      planilha['C2'] = computadores
+      planilha['C3'] = switchs
+      planilha['C4'] = switchsgre
+      planilha['C5'] = dvrs
+      planilha['C6'] = impressoras
+      planilha['C7'] = servidorarq
+      planilha['C8'] = roteadores
+      
                
 
 
