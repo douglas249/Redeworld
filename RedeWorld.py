@@ -1,5 +1,8 @@
 # ADICIONEI ALGUMAS BIBLIOTECAS PARA MELHORAR O PROGRAMA#
+import os
 from openpyxl import Workbook
+wb = Workbook()
+planilha = wb.active
 import math
 from time import sleep
 from tabulate import tabulate
@@ -58,9 +61,9 @@ print ('Bem vindo ao RedeaWorld, aqui voce poderá calcular a quantidade de cone
 sleep(1)
 opção = 0
 #ADICIONEI UMA ESTRUTURA PARA QUE O PROGRAMA NÃO SEJA ENCERRADO DE FORMA INDESEJADA#
-while opção != 5:
+while opção != 4:
 #DENTRO DO WHILE ADICIONEI ALGUMAS OPÇÕES PARA QUE O USUARIO ESCOLHA OQUE FAZER E DE COMO USAR O PROGRAMA#
-   print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Calcular os preços entre os equipamentos\n'     '[ 4 ] Salvar e encerrar')
+   print ( '[ 1 ] calcular quantidade de conectores e caixas de rede\n'  '[ 2 ] ver listagens de preço de equipamentos atual\n' '[ 3 ] Calcular os preços entre os equipamentos\n' '[ 4 ] Salvar e encerrar')
    opção = int(input('Qual opção deseja?'))
 #NA OPÇÃO 1 ADICIONEI O CALCULO DE CAIXAS DE REDE E CONECTORES#
 #NA OPÇÃO 2 ADICIONEI UMA LISTAGEM DE EQUIPAMENTOS COM SEUS RESPECTIVOS PREÇOS#
@@ -190,11 +193,7 @@ while opção != 5:
          if equipamento == 'roteadores':
             print ('ROTEADORES CISCO')
             #VARIAVEIS PARA CALCULOS#
-            ISR_1100 = 2.500
-            ISR_4321 = 5.600
-            ISR_4331 = 7.000
-            ISR_4431 = 15.000
-            roteadorestotaiscisco = ISR_1100 + ISR_4321 + ISR_4331 + ISR_4431
+            
             #RESPOSTA#
             lista = [
                [" ISR_1100 Series", "Pequenas empresas", "1.300 – 2.500$"],
@@ -211,13 +210,7 @@ while opção != 5:
             print ('----------------------------------------------------------------------------------------------')
          elif equipamento == 'switchs':
             print ('SWITCHS CISCO')
-            Catalyst_C1200_24T_4G =2.790
-            Catalyst_C1200_24P_4G =4.000
-            Catalyst_C1200_48P_4G =9.309
-            Catalyst_2960_X_2 =42.000
-            Catalyst_9200L_48T_4G_E =21.241
-            Catalyst_9200_48P_E =9.949
-            totaisswitchscisco = Catalyst_C1200_24T_4G + Catalyst_C1200_24P_4G + Catalyst_C1200_48P_4G + Catalyst_2960_X_2 + Catalyst_9200L_48T_4G_E + Catalyst_9200_48P_E
+           
             lista1 = [   
                            ["Catalyst_C1200_24T_4G", "Switch Gigabit 24 portas", "2.790$"],
                            ["Catalyst_C1200_24P_4G", "Switch Gigabit 24 portas PoE", "4.000$"],
@@ -242,12 +235,7 @@ while opção != 5:
              print('----------------------------------------------------------------------------------------------')
          elif equipamento == 'acess Point':
             print('ACESS POINT CISCO')
-            Meraki_MR33 = 1.000
-            Meraki_MR36  =3.700
-            Meraki_MR46 = 3.000  
-            Meraki_CW9164 = 11.000  
-            Meraki_CW9166 = 15.800  
-            acesspointcisco = Meraki_MR33 + Meraki_MR36 + Meraki_MR46 + Meraki_CW9164 + Meraki_CW9166
+            
 
             lista2 = [
                ["Meraki_MR33", "Wi-Fi 5", "870 – 1.000$"],
@@ -267,14 +255,7 @@ while opção != 5:
          if equipamento == 'roteadores':
                      print ('ROTEADORES TP-LINK')
                      
-                     TLWR840N = 114
-                     Archer_C50 = 210
-                     Archer_AX53 = 260
-                     Archer_BE550 = 1.300
-                     roteadorestplink = TLWR840N 
-                     roteadorestplink1 = Archer_C50
-                     roteadorestplink2 = Archer_AX53  
-                     roteadorestplink3 = Archer_BE550 = 1.300
+                     
                      lista = [
 
                          ["TLWR840N", "Roteador Wi-Fi N300", "114$"],
@@ -288,31 +269,11 @@ while opção != 5:
                         headers=["Modelo TP-LINK", "Descrição", "Preço médio (R$)"],
                         tablefmt="grid"
                      ))
-                     equipamentototais = str(input('Deseja escolher um equipamento para calcular o preço total [SIM/NÃO]?'))
-                     equipamentoderedetotal = 0
-                     if equipamentototais == 'SIM' or equipamentototais == 'sim':
-                         equipamentoderede = str(input('Digite aqui o equipamento que deseja:'))
-                         equipamentoderedetotal =+ 1
-                         if equipamentoderede == 'TLWR840N':
-                             print ('voce escolheu {} equipamento e o preço é {}'.format(equipamentoderedetotal, roteadorestplink))
-                         elif equipamentoderede == 'ArcherC50':
-                             print ('voce escolheu {} equipamento e o preço é {}'.format(equipamentoderedetotal, roteadorestplink1))
-                         elif equipamentoderede == 'ArcherAX53':
-                             print ('voce escolheu {} equipamento e o preço é {}'.format(equipamentoderedetotal, roteadorestplink2))
-                         elif equipamentoderede == 'ArcherBE550':
-                             print ('voce escolheu {} equipamento e o preço é {}'.format(equipamentoderedetotal, roteadorestplink3))
                      
-
                      print ('----------------------------------------------------------------------------------------------')
          elif equipamento == 'switchs':
                      print ('SWITCHS TP-LINK')
-                     TLSG105	=	110
-                     TLSG108	=	150
-                     TLSG1016D	=	553
-                     TLSG1024D	=	900
-                     TLSG1008MP	=	770
-                     T2600G28TS	=	1.359
-                     totaisswitchs = TLSG105 + TLSG108 + TLSG1016D + TLSG1024D + TLSG1008MP + T2600G28TS
+                    
                      lista1 = [     
                                     ["TLSG105", "Switch Gigabit 5 portas", "110$"],
                                     ["TLSG108", "Switch Gigabit 8 portas", "150$"],
@@ -330,12 +291,7 @@ while opção != 5:
                      print('----------------------------------------------------------------------------------------------')
          elif equipamento == 'acess Point':
                      print('ACESS POINT TP-LINK')
-                     EAP115 =220
-                     EAP225 =505
-                     EAP610 =720
-                     EAP613 =369
-                     EAP650 =998
-                     totalacesspoint = EAP115 + EAP225 + EAP610 + EAP613 + EAP650
+                     
 
                      lista2 = [
 
@@ -355,12 +311,7 @@ while opção != 5:
                sleep (1)
                if equipamento == 'roteadores':
                            print ('ROTEADORES INTELBRAS')
-                           W4_300S= 160
-                           W5_1200G= 220
-                           W5_1200GS= 250
-                           W6_1500 =328
-                           R_3000 = 473
-                           roteadoresintelbras = W4_300S + W5_1200G + W5_1200GS + W6_1500 + R_3000
+                          
                            lista = [   
                                  ["W4_300S", "Roteador Wi-Fi N300", "160$"],
                                  ["W5_1200G", "Roteador Wi-Fi AC1200", "220$"],
@@ -377,13 +328,7 @@ while opção != 5:
                            print ('----------------------------------------------------------------------------------------------')
                elif equipamento == 'switchs':
                            print ('SWITCHS INTELBRAS')
-                           SF800Q = 80
-                           S1116G = 660
-                           S1124G = 830
-                           S1110G_PA = 875
-                           S1120G_PA = 1.903
-                           S1128G_PA = 2.633
-                           totaisswitchsintelbras = SF800Q + S1116G + S1124G + S1110G_PA + S1120G_PA + S1128G_PA
+                           
                            lista1 = [     
 
                                           ["SF 800 Q+	Switch Fast Ethernet 8 portas	80$"],
@@ -403,13 +348,7 @@ while opção != 5:
                            print('----------------------------------------------------------------------------------------------')
                elif equipamento == 'acess Point':
                            print('ACESS POINT INTELBRAS')
-                           AP_3_10 = 320
-                           AP_3_60 = 702
-                           AP_12_10_AC = 529
-                           AP1250ACMax = 1.006
-                           AP1250ACOutdoor = 1.120
-                           AP_13_50_AC_S = 890
-                           totalacesspoint = AP_3_10 + AP_3_60 + AP_12_10_AC + AP1250ACMax + AP1250ACOutdoor + AP_13_50_AC_S
+                        
                            lista2 = [
 
                                    	["AP_3_10	Access Point Wi-Fi 4 Corporativo	320$"],
@@ -430,22 +369,29 @@ while opção != 5:
          quantidade = int(input("Quantos equipamentos você deseja calcular? "))
         
          total = 0
-        
+         linha = planilha.max_row + 1
          for i in range(quantidade):
                  nome = input(f"Digite o nome do {i+1}º equipamento: ")
         
                  if nome in equipamentos:
                      preco = equipamentos[nome]
                      print(f"{nome} custa R$ {preco:,.2f}")
+
+                     planilha[f"G{linha}"] = nome
+                     planilha[f"H{linha}"] = preco
+                      
+                     linha = planilha.max_row + 1
                      total += preco
                  else:
                      print("Equipamento não encontrado!")
         
          print(f"\nValor total: R$ {total:,.2f}")
    if opção == 4:
-      wb = Workbook()
-      planilha = wb.worksheets[0]
-
+      sleep(1)
+      nome_pasta = input('nome da pasta que deseja salvar:')
+      nome_arquivo = input('Nome do arquivo:')
+      
+      
       planilha['A1'] = 'QUANTIDADE DE CONECTORES:'
       planilha['A2'] = conectores1
       planilha['A3'] = conectores2
@@ -474,9 +420,21 @@ while opção != 5:
       planilha['C6'] = impressoras
       planilha['C7'] = servidorarq
       planilha['C8'] = roteadores
+      planilha['D1'] = 'DISTANCIA ENTRE EQUIPAMENTOS'
+      planilha['D2'] = 'ÁREA TOTAL DO PROJETO'
+      planilha['D3'] = 'CALCULO TOTAL'         
+      planilha['E1'] =  distancia
+      planilha['E2'] = area
+      planilha['E3'] = total1
+      planilha['F1'] = 'QUANTIDA NECESSARIAS DE CAIXAS DE REDE'
+      planilha['F2'] = caixas
       
-               
+      os.makedirs(nome_pasta, exist_ok=True)
 
+      salvamento = os.path.join(nome_pasta, f"{nome_arquivo}.xlsx")      
+      wb.save(salvamento)
+
+      print('Salvo com sucesso!')
 
 
     
