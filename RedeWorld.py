@@ -1,0 +1,348 @@
+# ADICIONEI ALGUMAS BIBLIOTECAS PARA MELHORAR O PROGRAMA#      
+from rich import print
+from fucao import interface
+from fucao import listaderepeticao
+
+
+
+import os
+from openpyxl import Workbook
+wb = Workbook()
+planilha = wb.active
+import math
+from time import sleep
+from tabulate import tabulate
+
+
+#LISTA DE EQUIPAMENTOS PARA CALCULOR DE VALOR NA OPÇÃO 3#
+equipamentos = {
+   "Catalyst_C1200_24T_4G": 2790,
+   "Catalyst_C1200_24P_4G": 4000,
+   "Catalyst_C1200_48P_4G": 59309,
+   "ISR_1100": 2500,
+   "ISR_4321": 5600,
+   "ISR_4331": 7000,
+   "ISR_4431": 15000,
+   "Meraki_MR33": 1.0,
+   "Meraki_MR36": 3.7,
+   "Meraki_MR46": 3.0,
+   "Meraki_CW9164": 11.0,
+   "Meraki_CW9166": 15.8,
+   "TLWR840N": 114,
+   "Archer_C50": 210,
+   "Archer_AX53": 260,
+   "Archer_BE550": 1.3,
+   "TLSG105": 110,
+   "TLSG108": 150,
+   "TLSG1016D": 553,
+   "TLSG1024D": 900,
+   "TLSG1008MP": 770,
+   "T2600G28TS": 1.359,
+   "EAP115": 220,
+   "EAP225": 505,
+   "EAP610": 720,
+   "EAP613": 369,
+   "EAP650": 998,
+   "W4_300S": 160,
+   "W5_1200G": 220,
+   "W5_1200GS": 250,
+   "W6_1500": 328,
+   "R_3000": 473,
+   "SF800Q": 80,
+   "S1116G": 660,
+   "S1124G": 830,
+   "S1110G_PA": 875,
+   "S1120G_PA": 1.903,
+   "S1128G_PA": 2.633,
+   "AP_3_10": 320,
+   "AP_3_60": 702,
+   "AP_12_10_AC": 529,
+   "AP1250ACMax": 1.006,
+   "AP1250ACOutdoor": 1.120,
+   "AP_13_50_AC_S": 890,
+}
+
+
+
+#TODOS EQUIPAMENTOS E PREÇOS#
+
+# CHAMANDO A FUNÇÃO DE APRESENTAÇÃO
+interface.cabecalho()
+sleep(1)
+
+opção = 0
+
+# UMA ESTRUTURA DE REPETIÇAO, REPETE AS OPÇÃO
+while opção != 4:
+#DENTRO DO WHILE ADICIONEI ALGUMAS OPÇÕES PARA QUE O USUARIO ESCOLHA OQUE FAZER E DE COMO USAR O PROGRAMA#
+   interface.opcoes_escolha()
+
+   opcao = int(input('Qual opção deseja?'))
+
+#NA OPÇÃO 1 ADICIONEI O CALCULO DE CAIXAS DE REDE E CONECTORES#
+   if opcao == 1:
+
+      print('Opção 1 selcionada, [green]vamos calcular[/]!...')
+      sleep (1)
+
+      listaderepeticao.escolhendo_equipamento()
+
+   if opção == 2:
+#AQUI ADICIONEI MAIS ALGUNS IF (CONDIÇOES ANINHADAS) PARA QUE O USUARIO ESCOLHA MARCA E EQUIPAMENTO#
+      print ('Qual marca de equipamento?')
+      print ('[ 1 ] Cisco System\n'  '[ 2 ] TP-Link\n' '[ 3 ] Intelbras\n')
+      opção1 = int(input('Escolha uma marca: '))
+      if opção1 == 1:
+         equipamento = str(input('Ver roteadores, switchs ou access Point?'))
+         sleep(1)
+         #MOSTRANDO EQUIPAMENTOS#
+         if equipamento == 'roteadores':
+            print ('ROTEADORES CISCO')
+            #VARIAVEIS PARA CALCULOS#
+            
+            #RESPOSTA#
+            lista = [
+               [" ISR_1100 Series", "Pequenas empresas", "1.300 – 2.500$"],
+               [" ISR_4321", "Filiais e escritórios", "2.700 – 5.600$"],
+               [" ISR_4331", "Médio porte", "1.700 – 7.000$"],
+               [" ISR_4431", "Grande porte", "7.900 – 15.000"],
+            ]
+            print(tabulate(
+               lista,
+               headers=["Modelo Cisco", "Descrição", "Preço médio (R$)"],
+               tablefmt="grid"
+            ))
+            #A ESTRUTURA ADIANTE SEGUE DA MESMA FORMA E PADRÃO DE COMANDOS#
+            print ('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'switchs':
+            print ('SWITCHS CISCO')
+           
+            lista1 = [   
+                           ["Catalyst_C1200_24T_4G", "Switch Gigabit 24 portas", "2.790$"],
+                           ["Catalyst_C1200_24P_4G", "Switch Gigabit 24 portas PoE", "4.000$"],
+                           ["Catalyst_C1200_48P_4G", "Switch Gigabit 48 portas PoE", "9.309$"],
+                           ["Catalyst_2960_X_24", "Switch corporativo 24 portas", "2.000$"],
+                           ["Catalyst_9200L_48T_4G_E", "Switch Layer 3 empresarial", "21.241$"],
+                           ["Catalyst_9200-48P_E", "Switch Layer 3 PoE 48 portas", "9.949$"]
+                           
+                           ]
+
+            
+            print(tabulate(
+                     lista1,
+                     headers=["Modelo Cisco", "Descrição", "Preço médio (R$)"],
+                     tablefmt="grid"     
+                  ))
+
+            equipamentototais = str(input('Deseja escolher um equipamento para calcular o preço total [SIM/NÃO]?'))
+            if equipamentototais == 'SIM' or equipamentototais == 'sim':
+                 
+          
+             print('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'acess Point':
+            print('ACESS POINT CISCO')
+            
+
+            lista2 = [
+               ["Meraki_MR33", "Wi-Fi 5", "870 – 1.000$"],
+               ["Meraki_MR36", "Wi-Fi 6", "2.300 – 3.700$"],
+               ["Meraki_MR46", "Wi-Fi 6 Enterprise", "3.000 – 4.500$"],
+               ["Meraki_CW9164", "Wi-Fi 6E", "11.000 – 12.000$"],
+               ["Meraki_CW9166", "Wi-Fi 6E Alta Densidade", "15.800 – 17.000$"],
+            ]
+            print(tabulate(
+               lista2,
+               headers=["Modelo Cisco", "Descrição", "Preço médio (R$)"],
+               tablefmt="grid"
+            ))
+      if opção1 == 2:
+         print ('Opção 2 selcionada...')
+         sleep (1)
+         if equipamento == 'roteadores':
+                     print ('ROTEADORES TP-LINK')
+                     
+                     
+                     lista = [
+
+                         ["TLWR840N", "Roteador Wi-Fi N300", "114$"],
+                         ["Archer_C50", "Roteador AC1200 Dual Band", "210$"],
+                         ["Archer_AX53", "Roteador Wi-Fi 6 AX3000", "260$"],
+                         ["Archer_BE550", "Roteador Wi-Fi 7 Tri-Band", "1.300$"],
+                        
+                     ]
+                     print(tabulate(
+                        lista,
+                        headers=["Modelo TP-LINK", "Descrição", "Preço médio (R$)"],
+                        tablefmt="grid"
+                     ))
+                     
+                     print ('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'switchs':
+                     print ('SWITCHS TP-LINK')
+                    
+                     lista1 = [     
+                                    ["TLSG105", "Switch Gigabit 5 portas", "110$"],
+                                    ["TLSG108", "Switch Gigabit 8 portas", "150$"],
+                                    ["TLSG1016D", "Switch Gigabit 16 portas", "553$"],
+                                    ["TLSG1024D", "Switch Gigabit 24 portas", "900$"],
+                                    ["TLSG1008MP", "Switch Gigabit 8 portas PoE+", "770$"],
+                                    ["T2600G-28TS", "Switch Gerenciável L2 24 portas + 4 SFP", "1.359$"]
+         
+                                    ]
+                     print(tabulate(
+                              lista1,
+                              headers=["Modelo TP-LINK", "Descrição", "Preço médio (R$)"],
+                              tablefmt="grid"
+                           ))
+                     print('----------------------------------------------------------------------------------------------')
+         elif equipamento == 'acess Point':
+                     print('ACESS POINT TP-LINK')
+                     
+
+                     lista2 = [
+
+                              ["EAP115", "Access Point N300", "220$"],
+                              ["EAP225", "Access Point AC1350 Omada", "505$"],
+                              ["EAP610", "Access Point Wi-Fi 6 AX1800", "720$"],
+                              ["EAP613", "Access Point Wi-Fi 6 AX1800", "369$"],
+                              ["EAP650", "Access Point Wi-Fi 6 AX3000", "998$"],
+                     ]
+                     print(tabulate(
+                        lista2,
+                        headers=["Modelo TP-LINK", "Descrição", "Preço médio (R$)"],
+                        tablefmt="grid"
+                     ))
+      if opção1 == 3:
+               print ('Opção 3 selcionada...')
+               sleep (1)
+               if equipamento == 'roteadores':
+                           print ('ROTEADORES INTELBRAS')
+                          
+                           lista = [   
+                                 ["W4_300S", "Roteador Wi-Fi N300", "160$"],
+                                 ["W5_1200G", "Roteador Wi-Fi AC1200", "220$"],
+                                 ["W5_1200GS", "Roteador Wi-Fi AC1200 Gigabit", "250$"],
+                                 ["W6_1500", "Roteador Wi-Fi 6 AX1500", "328$"],
+                                 ["RX_3000", "Roteador Wi-Fi 6 AX3000", "473$"],
+                              
+                           ]
+                           print(tabulate(
+                              lista,
+                              headers=["Modelo intelbras", "Descrição", "Preço médio (R$)"],
+                              tablefmt="grid"
+                           ))
+                           print ('----------------------------------------------------------------------------------------------')
+               elif equipamento == 'switchs':
+                           print ('SWITCHS INTELBRAS')
+                           
+                           lista1 = [     
+
+                                          ["SF 800 Q+	Switch Fast Ethernet 8 portas	80$"],
+                                          ["S1116G	Switch Gigabit 16 portas	660$"],
+                                          ["S1124G	Switch Gigabit 24 portas	830$"],
+                                          ["S1110G_PA	Switch Gigabit 10 portas PoE	875$"],
+                                          ["S1120G_PA	Switch Gigabit 20 portas PoE	1.903$"],
+                                          ["S1128G_PA	Switch Gigabit 28 portas PoE	2.633$"],
+
+               
+                                          ]
+                           print(tabulate(
+                                    lista1,
+                                    headers=["Modelo intelbras", "Descrição", "Preço médio (R$)"],
+                                    tablefmt="grid"
+                                 ))
+                           print('----------------------------------------------------------------------------------------------')
+               elif equipamento == 'acess Point':
+                           print('ACESS POINT INTELBRAS')
+                        
+                           lista2 = [
+
+                                   	["AP_3_10	Access Point Wi-Fi 4 Corporativo	320$"],
+                                   	["AP_3_60	Access Point Wi-Fi 4 Longo Alcance	702$"],
+                                   	["AP_12_10_AC	Access Point AC1200	529$"],
+                                    ["AP1250ACMax	Access Point Wi-Fi 5 Corporativo	1.006$"],
+                                   	["AP1250ACOutdoor	Access Point Wi-Fi 5 Outdoor	1.120$"],
+                                   	["AP_13_50_AC_S	Access Point Wi-Fi 5 Corporativo	890$"],
+
+                           ]
+                           print(tabulate(
+                              lista2,
+                              headers=["Modelo intelbras", "Descrição", "Preço médio (R$)"],
+                              tablefmt="grid"
+                           ))       
+   if opção == 3:
+#RESPOTA DA LISTA DE EQUIPAMENTOS:
+         quantidade = int(input("Quantos equipamentos você deseja calcular? "))
+        
+         total = 0
+         linha = planilha.max_row + 1
+         for i in range(quantidade):
+                 nome = input(f"Digite o nome do {i+1}º equipamento: ")
+        
+                 if nome in equipamentos:
+                     preco = equipamentos[nome]
+                     print(f"{nome} custa R$ {preco:,.2f}")
+
+                     planilha[f"G{linha}"] = nome
+                     planilha[f"H{linha}"] = preco
+                      
+                     linha = planilha.max_row + 1
+                     total += preco
+                 else:
+                     print("Equipamento não encontrado!")
+        
+         print(f"\nValor total: R$ {total:,.2f}")
+   if opção == 4:
+      sleep(1)
+      nome_pasta = input('nome da pasta que deseja salvar:')
+      nome_arquivo = input('Nome do arquivo:')
+      
+      
+      planilha['A1'] = 'QUANTIDADE DE CONECTORES:'
+      planilha['A2'] = conectores1
+      planilha['A3'] = conectores2
+      planilha['A4'] = conectores3
+      planilha['A5'] = conectores4
+      planilha['A6'] = conectores5
+      planilha['A7'] = conectores6
+      planilha['A8'] = conectores7
+      planilha['A9'] = 'QUANTIDADE TOTAL DE CONECTORES:'
+      planilha['A10'] = totalconec
+      planilha['A11'] = 'RESERVA DE CONECTORES:'
+      planilha['A12'] = reservaconec
+      planilha['B1'] = 'EQUIPAMENTOS:'
+      planilha['B2'] = 'computadores'
+      planilha['B3'] = 'switchs'
+      planilha['B4'] = 'switchsgre'
+      planilha['B5'] = 'dvrs'
+      planilha['B6'] = 'impressoras'
+      planilha['B7'] = 'servidorarq'
+      planilha['B8'] = 'roteadores'
+      planilha['C1'] = 'QUANTIDADE:'
+      planilha['C2'] = computadores
+      planilha['C3'] = switchs
+      planilha['C4'] = switchsgre
+      planilha['C5'] = dvrs
+      planilha['C6'] = impressoras
+      planilha['C7'] = servidorarq
+      planilha['C8'] = roteadores
+      planilha['D1'] = 'DISTANCIA ENTRE EQUIPAMENTOS'
+      planilha['D2'] = 'ÁREA TOTAL DO PROJETO'
+      planilha['D3'] = 'CALCULO TOTAL'         
+      planilha['E1'] =  distancia
+      planilha['E2'] = area
+      planilha['E3'] = total1
+      planilha['F1'] = 'QUANTIDA NECESSARIAS DE CAIXAS DE REDE'
+      planilha['F2'] = caixas
+      
+      os.makedirs(nome_pasta, exist_ok=True)
+
+      salvamento = os.path.join(nome_pasta, f"{nome_arquivo}.xlsx")      
+      wb.save(salvamento)
+
+      print('Salvo com sucesso!')
+
+
+    
+
+ 
