@@ -7,10 +7,16 @@ def cabecalho():
 
 
 
-def opcoes_escolha():
-    area_trabalho = Panel('[blue][ 1 ][/] calcular quantidade de conectores e caixas de rede.\n\n'    '[blue][ 2 ][/] ver listagens de preço de equipamentos atual.\n\n'    '[blue][ 3 ][/] Calcular os preços entre os equipamentos.\n\n'     '[blue][ 4 ][/] Salvar e encerrar.', title = "ÁREA DE TRABALHO", width = 45)
-    print(area_trabalho)
 
-gg = opcoes_escolha()
-print(gg)
+def opcoes_escolha(texto):
+    area_trabalho = Panel(texto, title='[blue]Escolha uma das opções abaixo[/]', subtitle='[green]Digite o número da opção desejada[/]')
+    print(area_trabalho)
+    
+
+
+
+def painel_de_equipamento(roteador, switch, acesspoint):
+    mostrar = Panel(f"Roteador: {roteador}\nSwitch: {switch}\nAccess Point: {acesspoint}", title='[blue]Equipamentos disponíveis[/]', subtitle='[green]Escolha o equipamento desejado[/]')
+    print(mostrar)
+
 
