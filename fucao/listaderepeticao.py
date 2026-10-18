@@ -69,6 +69,7 @@ def escolhendo_equipamento():
     caixas = metros / 305
 
     print(f'Seu projeto precisará de [orange]{espaco_total}[/] metros de cabo de rede e [yellow]{math.ceil(caixas)}[/] caixas de cabo de rede.')
+    return escolhidos, quantidade, espaco_total, caixas
 
            
 

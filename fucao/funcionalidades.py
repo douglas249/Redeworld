@@ -16,7 +16,9 @@ def calcular_valor_equipamento(total_equipamentos):
             print(f"{nome} custa R$ {preco:,.2f}")
     
             total += preco
+
+            print(f"\n[green]Valor totalR$[/]: R$ {total:,.2f}")
     else:
         print("[red]Equipamento não encontrado![/]")
             
-    print(f"\n[green]Valor totalR$[/]: R$ {total:,.2f}")
+    return total

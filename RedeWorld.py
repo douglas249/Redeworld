@@ -5,6 +5,7 @@ from time import sleep
 from fucao import interface
 from fucao import listaderepeticao
 from fucao import funcionalidades
+from fucao import banco_dados
 
 
 
@@ -158,8 +159,25 @@ while opção != 4:
       
          
    if opção == 4:
+      banco = banco_dados()
       sleep(1)
-      pass
+      banco.criar_dados()
+      banco.salvar_dados()
+
+      print('[green]Dados salvos com sucesso![/]')
+
+      resposta = str(input('Voce deseja visualizar projetos já salvos?'))
+
+      if resposta == 'SIM' or resposta == 'sim':
+          resultado = banco.ver_projetos()
+
+          for equipamento,equipamento_quantidade, area, caixas, valor_total in resultado:
+              print(f'Equipamento: {equipamento}')
+              print(f'Quantidade: {equipamento_quantidade}')
+              print(f'Área: {area}')
+              print(f'Caixas do projeto: {caixas}')
+              print(f'Valor do projeto {valor_total}R$')
+              
 
     
 
