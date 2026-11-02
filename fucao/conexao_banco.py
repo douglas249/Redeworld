@@ -1,21 +1,24 @@
 import psycopg
+from rich import print
 
 
 def conectar():
+
     return  psycopg.connect(
-    host="localhost",
+    host= "localhost",
     port=5432,
-    dbname="reworld",
-    user="reworld_user",
-    password="MinhaSenhaLocal_2026")
+    dbname= "reworld",
+    user= "reworld_user",
+    password= "MinhaSenhaLocal_2026")
+
 
 try:
     with conectar() as conexao:
-        print("Conexão estabelecida com sucesso!")
+        print('[green]CONEXÃO ESTABELECIDA COM SUCESSO![/]')
 
-except psycopg.Error as erro:
-    print(f'Erro ao conectar: {erro}')
-
-
+except:
+    print('[red]ERRO AO ESTABELECER CONEXÃO[/]')
 
 
+
+ 
